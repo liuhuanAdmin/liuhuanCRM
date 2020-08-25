@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<mapper namespace="com.bjpowernode.Dao.DeptDao">
+
+ <select id="getbyid" parameterType="java.lang.String" resultType="com.bjpowernode.domain.dept">
+  select * from dept where deptno =#{deptno}
+ </select>
+<!--查询全部，返回一个list集合
+select可以不写parameter,必须写result,
+但是updata,deleete,insert只需要写id-->
+ <select id="getAll"  resultType="dept">
+select * from dept
+</select>
+
+ <insert id="save" parameterType="com.bjpowernode.domain.dept">
+  insert into dept(deptno,dname,loc) values(#{deptno},#{dname},#{loc})
+ </insert>
+
+ <update id="updata">
+  update dept set dname=#{dname},loc=#{loc} where deptno=#{deptno}
+ </update>
+
+ <delete id="delete">
+  delete from dept where deptno=#{deptno}
+ </delete>
+
+</mapper>
